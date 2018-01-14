@@ -1,13 +1,12 @@
 package objsets
 
-import org.scalatest.FunSuite
-
-
 import org.junit.runner.RunWith
+import org.scalatest.FunSuite
 import org.scalatest.junit.JUnitRunner
 
 @RunWith(classOf[JUnitRunner])
 class TweetSetSuite extends FunSuite {
+
   trait TestSets {
     val set1 = new Empty
     val set2 = set1.incl(new Tweet("a", "a body", 20))
@@ -63,12 +62,19 @@ class TweetSetSuite extends FunSuite {
     }
   }
 
+  test("most retweeted: set5") {
+    new TestSets {
+      private val most = set5.mostRetweeted
+      assert(most.retweets == 20)
+    }
+  }
+
   test("descending: set5") {
     new TestSets {
-      val trends = set5.descendingByRetweet
+      private val trends = set5.descendingByRetweet
       assert(!trends.isEmpty)
       assert(trends.head.user == "a" || trends.head.user == "b")
     }
   }
 
-  }
+}
