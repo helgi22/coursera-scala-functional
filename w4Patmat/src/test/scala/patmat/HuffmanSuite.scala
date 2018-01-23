@@ -28,7 +28,8 @@ class HuffmanSuite extends FunSuite {
   }
 
   test("the number of times it occurs") {
-    assert(times(List('a', 'a', 'b')) == List(('b', 1), ('a', 2)))
+    val lst = List('h', 'e', 'l', 'l', 'o', ',', ' ', 'w', 'o', 'r', 'l', 'd')
+    assert(times(lst) == List(('e', 1), (' ', 1), (',', 1), ('l', 3), ('h', 1), ('r', 1), ('w', 1), ('o', 2), ('d', 1)))
   }
 
   test("string2chars(\"hello, world\")") {
