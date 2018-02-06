@@ -13,3 +13,22 @@ def product1(xs: List[Int]): Int = (1 :: xs) reduceLeft (_ * _)
 def sum2(xs: List[Int]): Int = (xs foldLeft (0)) (_ + _)
 def product2(xs: List[Int]): Int = (xs foldLeft (1)) (+_ * _)
 
+/**
+  * Implementation of FoldRight and ReduceRight
+  **/
+/*
+def reduceRight[T](op: (T,T) => T):T = this match {
+  case Nil => throw new Error("Nil.reduceRight")
+  case x::Nil => x
+  case x::xs => op(x, xs.reduceRight(op))
+}
+
+def foldRight[T,U](z:U)(op: (T,U)=>U):U = this match {
+  case Nil => z
+  case x::xs => op(x,(xs foldRight z)(op))
+}
+*/
+
+
+def concat[T](xs: List[T], ys: List[T]): List[T] =
+(xs foldRight ys) (_ :: _)
